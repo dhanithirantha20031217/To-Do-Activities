@@ -136,3 +136,173 @@ body {
     margin-top: 15px;
     font-size: 14px;
 }
+
+/* Navigation Bar */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-bar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.nav-bar a:hover {
+    background: #fff;
+    color: #0056b3;
+}
+
+.nav-bar .logout-btn {
+    background: #ff6b6b;
+    color: white;
+}
+
+.nav-bar .logout-btn:hover {
+    background: #ff5252;
+    color: white;
+}
+
+/* Container & Cards */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filter-form .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.search-btn {
+    width: auto;
+    padding: 10px 25px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.activity-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 5px solid #8ec5fc;
+}
+
+.activity-card.completed {
+    border-left-color: #2ecc71;
+    opacity: 0.7;
+}
+
+.activity-card.completed h3 {
+    text-decoration: line-through;
+}
+
+.time-badge {
+    display: inline-block;
+    font-size: 13px;
+    color: #555;
+    background: #f0f4f8;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-btn, .status-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background: #ff6b6b;
+    color: white;
+}
+
+.status-btn.pending {
+    background: #f1c40f;
+    color: #333;
+}
+
+.status-btn.completed {
+    background: #2ecc71;
+    color: white;
+}
+
+.success-msg {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.no-data {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+/* Missed Status Styling */
+.activity-card.missed {
+    border-left-color: #e74c3c;
+    background: #fff5f5;
+}
+
+.status-tag.missed {
+    background: #e74c3c;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-btn.missed {
+    background: #e74c3c;
+    color: white;
+}
