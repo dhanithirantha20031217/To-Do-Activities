@@ -1,9 +1,9 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'To_Do_Activities';
-$username = 'root'; 
-$password = 'Di20031217#';     
+$host = 'sql209.infinityfree.com'; 
+$dbname = 'if0_43364463_To_Do_Activities'; 
+$username = 'if0_43364463'; 
+$password = 'Di20031217';
 
 try {
     
