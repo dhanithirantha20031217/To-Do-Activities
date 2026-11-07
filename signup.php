@@ -1,29 +1,35 @@
 <?php
-require 'includes/db.php';
+require_once 'includes/db.php';
+date_default_timezone_set('Asia/Colombo'); // ශ්‍රී ලංකා වේලාව සකස් කිරීම
+
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $first_name = trim($_POST['first_name']);
+    $last_name  = trim($_POST['last_name']);
+    $email      = trim($_POST['email']);
+    $password   = $_POST['password'];
 
     // Password validation (8 chars, letter, number, symbol)
     $pattern = '/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/';
-    
+
     if (preg_match($pattern, $password)) {
-        // Hash the password securely
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Check if email already exists
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->execute([$email]);
+        
         if ($stmt->rowCount() > 0) {
             $error = "Email is already registered. Please Login.";
         } else {
-            // Insert user into database
-            $insert = $pdo->prepare("INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)");
-            if($insert->execute([$first_name, $last_name, $email, $hashed_password])) {
+            // ශ්‍රී ලංකා වේලාවට අනුව (Asia/Colombo) නිර්මාණය වන වෙලාව ලබා ගැනීම
+            $created_at = date('Y-m-d H:i:s');
+
+            // Insert user into database with Sri Lanka timestamp
+            $insert = $pdo->prepare("INSERT INTO users (first_name, last_name, email, password, created_at) VALUES (?, ?, ?, ?, ?)");
+            
+            if ($insert->execute([$first_name, $last_name, $email, $hashed_password, $created_at])) {
                 header("Location: login.php");
                 exit();
             } else {
