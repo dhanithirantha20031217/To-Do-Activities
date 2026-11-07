@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Colombo');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -33,3 +34,21 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php endif; ?>
 </header>
 <main>
+
+<?php
+// Pseudo-Cron Trigger for InfinityFree
+if (isset($_SESSION['user_id'])) {
+    
+    if (!isset($_SESSION['last_reminder_run']) || (time() - $_SESSION['last_reminder_run']) > 300) {
+        $_SESSION['last_reminder_run'] = time();
+        include_once __DIR__ . '/../cron_reminder.php';
+    }
+
+    
+    $today_str = date('Y-m-d');
+    if (!isset($_SESSION['last_daily_run']) || $_SESSION['last_daily_run'] !== $today_str) {
+        $_SESSION['last_daily_run'] = $today_str;
+        include_once __DIR__ . '/../cron_daily.php';
+    }
+}
+?>
