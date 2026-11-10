@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="add_work.php" method="POST">
         <div class="form-group">
             <label>Activity Description</label>
-            <input type="text" name="activity_name" placeholder="e.g. Team Meeting, Study PHP" required>
+            <input type="text" name="activity_name" placeholder="Enter activity description" required>
         </div>
         <div class="form-group">
             <label>Date</label>
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="form-group">
             <label>Time</label>
-            <input type="time" name="activity_time" required>
+            <input type="time" name="activity_time" placeholder="Enter activity time" required>
         </div>
         <button type="submit" class="btn">Add Activity</button>
     </form>
