@@ -50,5 +50,5 @@ foreach ($activities as $act) {
     }
 }
 
-echo "Reminder check script executed successfully.";
+
 ?>
