@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/db.php';
-date_default_timezone_set('Asia/Colombo'); // ශ්‍රී ලංකා වේලාව සකස් කිරීම
+date_default_timezone_set('Asia/Colombo'); 
 
 require_once 'includes/header.php';
 
@@ -10,16 +10,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$today = date('Y-m-d'); // අද දිනය (2026-11-07) ලබා ගනී
+$today = date('Y-m-d'); 
 
-// අද දිනට අදාළ වැඩ පමණක් Database එකෙන් ලබා ගැනීම
 $stmt = $pdo->prepare("SELECT * FROM activities WHERE user_id = ? AND activity_date = ? ORDER BY activity_time ASC");
 $stmt->execute([$user_id, $today]);
 $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <style>
-/* Home Page Card and UI Styling */
+/* Home Page Card Styling */
 .home-wrapper {
     max-width: 650px;
     margin: 40px auto;
