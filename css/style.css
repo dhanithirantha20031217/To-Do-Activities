@@ -1,3 +1,4 @@
+/* Universal Reset & Box Sizing Fix */
 * {
     margin: 0;
     padding: 0;
@@ -21,11 +22,14 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Header Styles */
+/* Header Container */
 .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
-    padding: 15px 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -48,20 +52,66 @@ body {
     font-size: 24px;
 }
 
-/* Footer Styles */
-.main-footer {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    padding: 15px;
-    margin-top: auto;
-    font-size: 14px;
+/* Navigation Bar Base Styles */
+.nav-bar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
 }
 
-.main-footer a {
-    color: #0056b3;
+.nav-bar li {
+    display: flex;
+}
+
+.nav-bar a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    font-weight: bold;
+    color: #333;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+    white-space: nowrap; /* Prevents text wrapping into lines */
+    font-size: 14px;
+    line-height: 1;
+}
+
+.nav-bar a:hover {
+    background: #ffffff;
+    color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.nav-bar .logout-btn {
+    background: #ff6b6b;
+    color: #ffffff;
+}
+
+.nav-bar .logout-btn:hover {
+    background: #ff5252;
+    color: #ffffff;
+}
+
+/* Container & Cards */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
 }
 
 /* Form Styles (Login & Signup) */
@@ -137,61 +187,7 @@ body {
     font-size: 14px;
 }
 
-/* Navigation Bar */
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.nav-bar ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-.nav-bar a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: 0.3s;
-    background: rgba(255, 255, 255, 0.4);
-}
-
-.nav-bar a:hover {
-    background: #fff;
-    color: #0056b3;
-}
-
-.nav-bar .logout-btn {
-    background: #ff6b6b;
-    color: white;
-}
-
-.nav-bar .logout-btn:hover {
-    background: #ff5252;
-    color: white;
-}
-
-/* Container & Cards */
-.container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(15px);
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.subtitle {
-    color: #666;
-    margin-bottom: 20px;
-}
-
+/* Filter Form */
 .filter-form {
     display: flex;
     gap: 15px;
@@ -210,6 +206,7 @@ body {
     padding: 10px 25px;
 }
 
+/* Activity Lists & Cards */
 .activity-list {
     display: flex;
     flex-direction: column;
@@ -305,4 +302,55 @@ body {
 .status-btn.missed {
     background: #e74c3c;
     color: white;
+}
+
+/* Footer Styles */
+.main-footer {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    font-size: 14px;
+}
+
+.main-footer a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mobile Responsive Navigation Layout */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 10px;
+        gap: 12px;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .logo-container h1 {
+        font-size: 20px;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
+    .nav-bar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .nav-bar a {
+        font-size: 12px;
+        padding: 8px 12px;
+        border-radius: 8px;
+    }
 }
