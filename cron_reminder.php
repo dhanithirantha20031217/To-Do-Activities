@@ -1,5 +1,5 @@
 <?php
-// reminder.php - cron job to send email reminders for activities starting within the next 10 minutes
+// cron_reminder.php - cron job to send email reminders for activities starting within the next 10 minutes
 date_default_timezone_set('Asia/Colombo'); 
 
 require_once __DIR__ . '/includes/db.php';
@@ -7,7 +7,6 @@ require_once __DIR__ . '/includes/mailer.php';
 
 $today = date('Y-m-d');
 $current_time = time();
-
 
 $query = "
     SELECT a.id, a.activity_name, a.activity_time, a.activity_date, u.email, u.first_name 
@@ -27,6 +26,7 @@ $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($activities as $act) {
     $activity_timestamp = strtotime($act['activity_date'] . ' ' . $act['activity_time']);
+    // මෙන්න නිවැරදි කළ පේළිය:
     $minutes_until_start = ($activity_timestamp - $current_time) / 60;
 
     // Check if the activity is starting within the next 10 minutes
@@ -49,6 +49,4 @@ foreach ($activities as $act) {
         }
     }
 }
-
-
 ?>
